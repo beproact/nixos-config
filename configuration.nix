@@ -50,8 +50,13 @@
   services.displayManager.ly.enable = true;
   services.displayManager.ly = {
     x11Support = true;
-    settings = {
-      animation = "doom";
+    settings = { # https://github.com/fairyglade/ly/blob/master/res/config.ini
+      animation = "gameoflife";
+      battery_id = "BAT0";
+      clock = "%c";
+      gameoflife_entropy_interval = "0";
+      gameoflife_initial_density = "0.4";
+      vi_mode = "false";
     };
   };
 
