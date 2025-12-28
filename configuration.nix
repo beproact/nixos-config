@@ -55,8 +55,10 @@
       battery_id = "BAT0";
       clock = "%c";
       gameoflife_entropy_interval = "0";
-      gameoflife_initial_density = "0.4";
+      gameoflife_initial_density = "0.6";
       vi_mode = "false";
+      default_input = "password";
+      auth_fails = "1";
     };
   };
 
