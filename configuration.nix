@@ -48,6 +48,15 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.ly.enable = true;
+  services.displayManager.ly = {
+    x11Support = true;
+    settings = {
+      animation = "doom";
+    };
+  };
+
+
+
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11

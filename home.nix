@@ -25,7 +25,7 @@
             '';
     };
 
-    programs.git = {
+    programs.git = { # enable already set for some reason
         settings = {
             user = {
                 name  = "BeProact";
