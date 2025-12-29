@@ -122,7 +122,8 @@
     yazi
     gcc
     home-manager
-    anyrun
+    # anyrun
+    tofi
   ];
   
   environment.variables = {
