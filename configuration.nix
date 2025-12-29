@@ -124,6 +124,7 @@
     home-manager
     # anyrun
     tofi
+    bemenu
   ];
   
   environment.variables = {
