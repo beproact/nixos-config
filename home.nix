@@ -42,6 +42,7 @@
         enable = true;
         settings = {
             font-family = "JetBrainsMono Nerd Font";
+	    shell-integration-features = "no-title";
         };
     };
     
