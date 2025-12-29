@@ -13,6 +13,8 @@
             nrsf = "sudo nixos-rebuild switch --flake /home/snappy/.dotfiles/nixos/ --impure";
             nrsi = "sudo nixos-rebuild switch --flake . --impure";
         };
+	sessionVariables = {
+	};
         initExtra =
             ''
                 function y() {
@@ -41,4 +43,6 @@
             font-family = "JetBrainsMono Nerd Font";
         };
     };
+
+
 }
