@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -24,7 +20,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
@@ -106,16 +101,13 @@
     ];
   };
 
-  # Install firefox.
   programs.firefox.enable = true;
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim 
     wget
     ghostty
     git
@@ -123,13 +115,17 @@
     gcc
     home-manager
     # anyrun
-    tofi
-    bemenu
+    # tofi
+    # bemenu
+    fuzzel
+    jq
   ];
   
   environment.variables = {
     EDITOR = "nvim";
   };
+
+
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

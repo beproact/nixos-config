@@ -1,0 +1,54 @@
+niri msg -j windows | jq '.[] | .app_id + "|" + .title + "id:" + (.id|tostring)' -r | fuzzel --dmenu
+niri msg -j windows | jq '.[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs echo niri msg action focus-window --id | bash
+niri msg -j windows | jq '.[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id
+
+ niri msg -j windows | jq 'sort_by(.workspace_id) | .[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id
+
+
+niri msg -j windows | jq 'sort_by(.id) | sort_by(.workspace_id) | .[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id
+
+
+  # get list of active workspaces
+niri msg -j workspaces | jq '[.[] | select(.is_active==true) | .id]'
+
+# get list of numbers and take only this in the list
+map(select([.] | inside([2,1,7])))
+
+# gets those that match .workspace_id
+map(select([.workspace_id] | inside([1,2])))
+
+
+
+# abomination for searching within active workspaces
+niri msg -j workspaces | jq '[.[] | select(.is_active==true) | .id]' -c | xargs printf "niri msg -j windows | jq '. | map(select([.workspace_id] | inside(%s)))'"| bash | jq 'sort_by(.id) | sort_by(.workspace_id) | .[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id
+
+
+niri msg -j windows | jq --argjson ws "$(niri msg -j workspaces | jq '[.[] | select(.is_active==true) | .id]' -c)" ' map(select([.workspace_id] | inside($ws))) | sort_by(.id) | sort_by(.workspace_id) | .[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id
+
+# Show only in workspace
+niri msg -j windows | jq --argjson ws "$(niri msg -j workspaces | jq '[.[] | select(.is_active==true) | .id]' -c)" 'map(select([.workspace_id] | inside($ws))) | sort_by(.workspace_id, .id) | .[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id
+
+# only not is_focused
+niri msg -j windows | jq --argjson ws "$(niri msg -j workspaces | jq '[.[] | select(.is_active==true) | .id]' -c)" 'map(select([.workspace_id] | inside($ws)) | select(.is_focused != true)) | sort_by(.workspace_id, .id) | .[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id
+
+# show full title
+niri msg -j windows | jq --argjson ws "$(niri msg -j workspaces | jq '[.[] | select(.is_active==true) | .id]' -c)" 'map(select([.workspace_id] | inside($ws)) | select(.is_focused != true)) | sort_by(.workspace_id, .id) | .[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + .title + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id
+
+
+# More understable? doesn't work dueto formatting i think but idc
+niri msg -j windows
+    | jq --argjson ws
+        "$(niri msg -j workspaces
+            | jq '[.[] | select(.is_active==true) | .id]' -c)"
+        'map(
+            select([.workspace_id] | inside($ws))
+            | select(.is_focused != true))
+        | sort_by(.workspace_id, .id)
+        | .[]
+        | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + (.title | split(" "))[0] + "|id:" + (.id|tostring)' -r
+    | fuzzel --dmenu
+    | jq -R 'split(":")[-1] | tonumber'
+    | xargs -r niri msg action focus-window --id
+
+
+

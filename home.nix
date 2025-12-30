@@ -47,6 +47,17 @@
 	    # wez also
         };
     };
+
+    
+    programs.fuzzel = {
+	enable = true;
+	settings = {
+	    main = {
+		terminal = "ghostty -e {cmd}";
+		placeholder = "PIZZA HUT";
+	    };
+	};
+    };
     
     xdg.configFile."niri/config.kdl".source = ./configs/config.kdl;
 
