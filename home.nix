@@ -60,7 +60,7 @@
 	settings = {
 	    main = {
 		terminal = "ghostty -e {cmd}";
-		placeholder = "";
+		# placeholder = "";
 		horizontal-pad = "8";
 		width = "70";
 		tabs = "2";

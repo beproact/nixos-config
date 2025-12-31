@@ -1,19 +1,21 @@
 #!/bin/sh
-MENU=fuzzel
-pkill $MENU ||\
-    niri msg -j windows\
-        | jq --argjson ws\
-            "$(niri msg -j workspaces| jq '
-                [.[] | select(.is_active==true) | .id]
-            '\
-            -c)"\
+
+WINDOWS="$(niri msg -j windows)"
+
+LONG="$(echo "$WINDOWS" | jq -r '[.[].app_id | split(".") | last |length] | max')"
+ACTIVE="$(niri msg -j workspaces| jq '[.[] | select(.is_active==true) | .id]' -c)"
+pkill fuzzel ||\
+    echo "$WINDOWS"\
+        | jq --argjson ws "$ACTIVE"\
+            --argjson long "$LONG"\
+            -r \
             '
                 def icon:
                     if .app_id | test("ghostty") then "com.mitchellh.ghostty"
                     else (.app_id | split(".") | last)
                     end;
                 def capitalize:
-                    (.[0:1] | ascii_upcase) + .[1:];
+                    (.[:1] | ascii_upcase) + .[1:];
                 def force_size($n):
                     (.+(" " * $n))[:$n];
                 sort_by(.workspace_id, .id)
@@ -21,15 +23,16 @@ pkill $MENU ||\
                 | .[]
                 | (.workspace_id|tostring)
                     + "\u2502"
-                    + ((.app_id | split("."))[-1] | capitalize | force_size(10))
+                    + ((.app_id | split("."))[-1] | capitalize | force_size($long))
                     + "\u2502"
-
-                    + (.title | force_size(47))
-                    + "\u2502"
-                    + (.id|tostring)
+                    + (.title)
+                    + "\u200C"
+                    + ("\u200B" * .id)
                     + "\u0000icon\u001f"
                     + icon
-                    + ",application-x-executable"' -r\
-        | $MENU --dmenu --placeholder="Swap to Window"\
-        | jq -R 'split("\u2502")[-1] | tonumber'\
+                    + ",application-x-executable"
+            '\
+        | fuzzel --dmenu --placeholder='Swap Window' \
+        | jq -R '(split("\u200C")[-1]) | length'\
         | xargs -r niri msg action focus-window --id
+# keeps track of id by number of invisible \u200B characters which is stupid but works
