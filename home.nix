@@ -60,7 +60,21 @@
 	settings = {
 	    main = {
 		terminal = "ghostty -e {cmd}";
-		placeholder = "what";
+		placeholder = "";
+		horizontal-pad = "8";
+		width = "70";
+		tabs = "2";
+		font = "JetBrainsMono Nerd Font";
+	    };
+	    colors = {
+		background = "000000ff";
+		text = "ffffffff";
+		border = "ffffffff";
+		selection = "ffffffff";
+		selection-text = "000000ff";
+	    };
+	    border = {
+		radius = "0";
 	    };
 	};
     };

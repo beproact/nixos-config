@@ -119,7 +119,7 @@
     # bemenu
     fuzzel
     jq
-    kdePackages.breeze
+    kdePackages.breeze-icons
   ];
   
   environment.variables = {
