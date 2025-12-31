@@ -119,6 +119,7 @@
     # bemenu
     fuzzel
     jq
+    kdePackages.breeze
   ];
   
   environment.variables = {

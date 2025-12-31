@@ -6,6 +6,12 @@
     programs.git.enable = true;
     home.stateVersion = "25.11";
     # home.backupFileExtension = "backup";
+
+    home.packages = with pkgs; [
+	(writeShellScriptBin "custom-niri-swap" (builtins.readFile ./scripts/custom-niri-swap.sh))
+
+    ];
+
     programs.bash = {
         enable = true;
         shellAliases = {
@@ -54,7 +60,7 @@
 	settings = {
 	    main = {
 		terminal = "ghostty -e {cmd}";
-		placeholder = "PIZZA HUT";
+		placeholder = "what";
 	    };
 	};
     };

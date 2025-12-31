@@ -370,7 +370,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "pkill fuzzel || fuzzel"; }
-    Mod+S hotkey-overlay-title="Switch Application: fuzzel" { spawn-sh r#"pkill fuzzel || niri msg -j windows | jq --argjson ws "$(niri msg -j workspaces | jq '[.[] | select(.is_active==true) | .id]' -c)" 'map(select([.workspace_id] | inside($ws)) | select(.is_focused != true)) | sort_by(.workspace_id, .id) | .[] | (.workspace_id|tostring)+ ":" + (.app_id | split("."))[-1] + "|" + .title + "|id:" + (.id|tostring)' -r | fuzzel --dmenu | jq -R 'split(":")[-1] | tonumber' | xargs -r niri msg action focus-window --id"#; }
+    Mod+S hotkey-overlay-title="Switch Application: fuzzel" { spawn-sh "custom-niri-swap"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
