@@ -1,10 +1,15 @@
 #!/bin/sh
 
-WINDOWS="$(niri msg -j windows)"
+MENU=fuzzel
+dmen () {
+    $MENU --dmenu --placeholder='Swap Window'
+}
 
+
+WINDOWS="$(niri msg -j windows)"
 LONG="$(echo "$WINDOWS" | jq -r '[.[].app_id | split(".") | last |length] | max')"
 ACTIVE="$(niri msg -j workspaces| jq '[.[] | select(.is_active==true) | .id]' -c)"
-pkill fuzzel ||\
+pkill "$MENU" ||\
     echo "$WINDOWS"\
         | jq --argjson ws "$ACTIVE"\
             --argjson long "$LONG"\
@@ -19,7 +24,8 @@ pkill fuzzel ||\
                 def force_size($n):
                     (.+(" " * $n))[:$n];
                 sort_by(.workspace_id, .id)
-                | [map(select([.workspace_id] | inside($ws))), map(select([.workspace_id] | (inside($ws) | not)))] | add
+                | [map(select([.workspace_id] | inside($ws))), map(select([.workspace_id] | (inside($ws) | not)))]
+		| add
                 | .[]
                 | (.workspace_id|tostring)
                     + "\u2502"
@@ -32,7 +38,8 @@ pkill fuzzel ||\
                     + icon
                     + ",application-x-executable"
             '\
-        | fuzzel --dmenu --placeholder='Swap Window' \
+        | dmen \
         | jq -R '(split("\u200C")[-1]) | length'\
         | xargs -r niri msg action focus-window --id
+
 # keeps track of id by number of invisible \u200B characters which is stupid but works

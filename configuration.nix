@@ -120,6 +120,7 @@
     fuzzel
     jq
     kdePackages.breeze-icons
+    xwayland-satellite
   ];
   
   environment.variables = {
