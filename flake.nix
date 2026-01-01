@@ -12,7 +12,7 @@
 	};
     };
 
-    outputs = {self, nixpkgs, home-manager, ...} : {
+    outputs = {self, nixpkgs, home-manager, nur, ...} : {
         nixosConfigurations.snix = nixpkgs.lib.nixosSystem{
             system = "x86_64-linux";
             modules = [
@@ -26,6 +26,7 @@
                         backupFileExtension = "backup";
                     };
                 }
+		{ nixpkgs.overlays = [ nur.overlays.default ]; }
             ];
         };
     };
