@@ -10,6 +10,7 @@
     home.packages = with pkgs; [
 	(writeShellScriptBin "custom-niri-swap" (builtins.readFile ./scripts/custom-niri-swap.sh))
 
+	(writeShellScriptBin "custom-niri-harp" (builtins.readFile ./scripts/harp.sh))
     ];
 
     programs.bash = {
