@@ -122,6 +122,7 @@
     kdePackages.breeze-icons
     xwayland-satellite 
     foot
+    nur.repos.Ev357.helium # worlds most complicated way of installing an appimage
   ];
   
   environment.variables = {
