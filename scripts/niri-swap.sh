@@ -50,9 +50,9 @@ swap () {
                         + icon
                         + ",application-x-executable"
                 '\
-            | dmen \
-            | jq -R '(split("\u200C")[-1]) | length'\
-            | xargs -r niri msg action focus-window --id
+           | dmen \
+           | jq -R '(split("\u200C")[-1]) | length'\
+           | xargs -r niri msg action focus-window --id
 }
 swap
 # keeps track of id by number of invisible \u200B characters which is stupid but works

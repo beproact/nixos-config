@@ -15,7 +15,7 @@ window-rule {
 window-rule {
     exclude is-active=true
     // exclude is-floating=true
-    opacity 0.9
+    opacity 0.8
 }
 
 gestures {

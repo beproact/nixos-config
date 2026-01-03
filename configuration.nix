@@ -101,7 +101,7 @@
     ];
   };
 
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
@@ -114,15 +114,16 @@
     yazi
     gcc
     home-manager
-    # anyrun
-    # tofi
-    # bemenu
     fuzzel
     jq
     kdePackages.breeze-icons
     xwayland-satellite 
     foot
-    nur.repos.Ev357.helium # worlds most complicated way of installing an appimage
+    nur.repos.Ev357.helium
+    gh
+    tree-sitter
+    unzip
+    clang
   ];
   
   environment.variables = {

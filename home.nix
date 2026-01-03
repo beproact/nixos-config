@@ -8,9 +8,9 @@
     # home.backupFileExtension = "backup";
 
     home.packages = with pkgs; [
-	(writeShellScriptBin "custom-niri-swap" (builtins.readFile ./scripts/custom-niri-swap.sh))
+	(writeShellScriptBin "custom-niri-swap" (builtins.readFile ./scripts/niri-swap.sh))
 
-	(writeShellScriptBin "custom-niri-harp" (builtins.readFile ./scripts/harp.sh))
+	(writeShellScriptBin "custom-niri-harp" (builtins.readFile ./scripts/niri-harp.sh))
     ];
 
     programs.bash = {
