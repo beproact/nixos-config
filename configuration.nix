@@ -123,7 +123,7 @@
     gh
     tree-sitter
     unzip
-    clang
+    libclang
   ];
   
   environment.variables = {
