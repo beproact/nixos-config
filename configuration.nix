@@ -125,6 +125,9 @@
     unzip
     clang-tools
     git-credential-manager
+    ripgrep
+    gnumake
+    fd
   ];
 
   programs.nix-ld.enable = true;
