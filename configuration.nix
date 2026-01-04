@@ -123,8 +123,11 @@
     gh
     tree-sitter
     unzip
-    libclang
+    clang-tools
+    git-credential-manager
   ];
+
+  programs.nix-ld.enable = true;
   
   environment.variables = {
     EDITOR = "nvim";

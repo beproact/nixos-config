@@ -42,7 +42,17 @@
                 email = "jasonalow8@gmail.com";
             };
             init.defaultBranch = "main";
+	    credential = {
+		helper = "store";
+		"https://github.com".username = "beproact";
+		credentialStore = "cache";
+	    };
         };
+    };
+
+    programs.gh = {
+	enable = true;
+	gitCredentialHelper.enable = true;
     };
 
     programs.ghostty = {
