@@ -60,6 +60,7 @@
   programs.niri = {
     enable = true;    
   };
+  programs.direnv.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11

@@ -59,6 +59,8 @@
         enable = true;
         settings = {
             font-family = "JetBrainsMono Nerd Font";
+	    font-feature = "-calt, -liga, -dlig";
+	    font-size = "10";
 	    shell-integration-features = "no-title";
 	    theme = "Tomorrow Night Bright";
 	    # wez also
