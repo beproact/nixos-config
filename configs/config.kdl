@@ -15,12 +15,13 @@ window-rule {
 window-rule {
     exclude is-active=true
     // exclude is-floating=true
-    opacity 0.8
+    opacity 0.95
 }
 
 gestures {
     hot-corners {
-	top-right
+	// top-right
+	off
     }
 
 }
@@ -132,7 +133,7 @@ input {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 2 
+    gaps 0 
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -177,7 +178,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
 
         // How many logical pixels the ring extends out from the windows.
         width 1 
@@ -218,8 +219,8 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         off
 
-        width 4
-        active-color "#ffc87f"
+        width 1
+        active-color "#000000"
         inactive-color "#505050"
 
         // Color of the border around windows that request your attention.
@@ -289,7 +290,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
+spawn-at-startup "mako"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

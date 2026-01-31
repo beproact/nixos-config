@@ -60,6 +60,8 @@
   programs.niri = {
     enable = true;    
   };
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   programs.direnv.enable = true;
   services.desktopManager.plasma6.enable = true;
 
@@ -129,6 +131,9 @@
     ripgrep
     gnumake
     fd
+    swaybg
+    mako
+    libnotify
   ];
 
   programs.nix-ld.enable = true;

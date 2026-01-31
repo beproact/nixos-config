@@ -91,6 +91,18 @@
 	    };
 	};
     };
+
+    services.mako = {
+	enable = true;
+	settings = {
+	    width = "500";
+	    height = "200";
+	    background-color = "#000000";
+	    border-color = "#FFFFFF";
+	    font = "JetBrainsMono Nerd Font 10";
+	    default-timeout = "5000";
+	};
+    };
     
     xdg.configFile."niri/config.kdl".source = ./configs/config.kdl;
 
