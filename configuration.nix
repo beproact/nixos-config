@@ -113,6 +113,7 @@
     neovim 
     wget
     ghostty
+    kitty
     git
     yazi
     gcc
@@ -134,6 +135,7 @@
     swaybg
     mako
     libnotify
+    zoxide
   ];
 
   programs.nix-ld.enable = true;

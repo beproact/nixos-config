@@ -13,7 +13,7 @@
 	(writeShellScriptBin "custom-niri-harp" (builtins.readFile ./scripts/niri-harp.sh))
     ];
 
-    programs.bash = {
+    programs.zsh = {
         enable = true;
         shellAliases = {
             nrs = "sudo nixos-rebuild switch";
@@ -23,7 +23,7 @@
         };
 	sessionVariables = {
 	};
-        initExtra =
+        initContent =
             ''
                 function y() {
                     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -65,6 +65,40 @@
 	    theme = "Tomorrow Night Bright";
 	    # wez also
         };
+    };
+
+    programs.kitty = {
+	enable = true;
+	font.name = "JetBrainsMono Nerd Font";
+	font.size = 10;
+	settings = {
+	    disable_ligatures = "always";
+	};
+    };
+
+    programs.foot.enable = true;
+    programs.foot.settings = {
+	main.font = "JetBrainsMono Nerd Font:size=10";
+	colors = {
+	    foreground="eaeaea";
+	    background="000000";
+	    regular0="000000";
+	    regular1="d54e53";
+	    regular2="b9ca4a";
+	    regular3="e7c547";
+	    regular4="7aa6da";
+	    regular5="c397d8";
+	    regular6="70c0b1";
+	    regular7="ffffff";
+	    bright0="000000";
+	    bright1="d54e53";
+	    bright2="b9ca4a";
+	    bright3="e7c547";
+	    bright4="7aa6da";
+	    bright5="c397d8";
+	    bright6="70c0b1";
+	    bright7="ffffff";
+	};
     };
 
     

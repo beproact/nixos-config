@@ -291,6 +291,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "mako"
+spawn-sh-at-startup "swaybg -i ~/Pictures/bg.png"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -343,7 +344,7 @@ window-rule {
     open-floating true
 }
 
-window-rule {
+/-window-rule {
     match app-id="foot"
     open-floating true
 }
@@ -382,7 +383,7 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "foot"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "pkill fuzzel || fuzzel"; }
     Mod+S hotkey-overlay-title="Switch Application" { spawn-sh "custom-niri-swap"; }
     // Mod+A hotkey-overlay-title="Switch Application: fuzzel" { spawn-sh "custom-niri-harp store"; }
