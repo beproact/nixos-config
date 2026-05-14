@@ -19,7 +19,7 @@
             nrs = "sudo nixos-rebuild switch";
             btw = "echo waffle house";
             nrsf = "sudo nixos-rebuild switch --flake /home/snappy/.dotfiles/nixos/ --impure";
-	    hms = "home-manager switch -f /home/snappy/.dotfiles/nixos/home.nix";
+            hms = "home-manager switch -f /home/snappy/.dotfiles/nixos/home.nix";
         };
 	sessionVariables = {
 	};
@@ -32,6 +32,7 @@
                     [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
                     rm -f -- "$tmp"
                 }
+                eval "$(zoxide init --cmd cd zsh)"
             '';
     };
 
@@ -51,8 +52,8 @@
     };
 
     programs.gh = {
-	enable = true;
-	gitCredentialHelper.enable = true;
+        enable = true;
+        gitCredentialHelper.enable = true;
     };
 
     programs.ghostty = {
@@ -68,74 +69,74 @@
     };
 
     programs.kitty = {
-	enable = true;
-	font.name = "JetBrainsMono Nerd Font";
-	font.size = 10;
-	settings = {
-	    disable_ligatures = "always";
-	};
+        enable = true;
+        font.name = "JetBrainsMono Nerd Font";
+        font.size = 10;
+        settings = {
+            disable_ligatures = "always";
+        };
     };
 
     programs.foot.enable = true;
     programs.foot.settings = {
-	main.font = "JetBrainsMono Nerd Font:size=10";
-	colors = {
-	    foreground="eaeaea";
-	    background="000000";
-	    regular0="000000";
-	    regular1="d54e53";
-	    regular2="b9ca4a";
-	    regular3="e7c547";
-	    regular4="7aa6da";
-	    regular5="c397d8";
-	    regular6="70c0b1";
-	    regular7="ffffff";
-	    bright0="000000";
-	    bright1="d54e53";
-	    bright2="b9ca4a";
-	    bright3="e7c547";
-	    bright4="7aa6da";
-	    bright5="c397d8";
-	    bright6="70c0b1";
-	    bright7="ffffff";
-	};
+        main.font = "JetBrainsMono Nerd Font:size=10";
+        colors = {
+            foreground="eaeaea";
+            background="000000";
+            regular0="000000";
+            regular1="d54e53";
+            regular2="b9ca4a";
+            regular3="e7c547";
+            regular4="7aa6da";
+            regular5="c397d8";
+            regular6="70c0b1";
+            regular7="ffffff";
+            bright0="000000";
+            bright1="d54e53";
+            bright2="b9ca4a";
+            bright3="e7c547";
+            bright4="7aa6da";
+            bright5="c397d8";
+            bright6="70c0b1";
+            bright7="ffffff";
+        };
     };
 
     
     programs.fuzzel = {
-	enable = true;
-	settings = {
-	    main = {
-		terminal = "ghostty -e {cmd}";
-		# placeholder = "";
-		horizontal-pad = "8";
-		width = "70";
-		tabs = "2";
-		font = "JetBrainsMono Nerd Font";
-	    };
-	    colors = {
-		background = "000000ff";
-		text = "ffffffff";
-		border = "ffffffff";
-		selection = "ffffffff";
-		selection-text = "000000ff";
-	    };
-	    border = {
-		radius = "0";
-	    };
-	};
+        enable = true;
+        settings = {
+            main = {
+            terminal = "ghostty -e {cmd}";
+            # placeholder = "";
+            horizontal-pad = "8";
+            width = "70";
+            tabs = "2";
+            font = "JetBrainsMono Nerd Font";
+            };
+            colors = {
+            background = "000000ff";
+            text = "ffffffff";
+            border = "ffffffff";
+            selection = "ffffffff";
+            selection-text = "000000ff";
+            };
+            border = {
+                radius = "0";
+            };
+        };
     };
 
     services.mako = {
-	enable = true;
-	settings = {
-	    width = "500";
-	    height = "200";
-	    background-color = "#000000";
-	    border-color = "#FFFFFF";
-	    font = "JetBrainsMono Nerd Font 10";
-	    default-timeout = "5000";
-	};
+        enable = true;
+        settings = {
+            width = "500";
+            height = "200";
+            background-color = "#000000";
+            border-color = "#FFFFFF";
+            font = "JetBrainsMono Nerd Font 10";
+            default-timeout = "5000";
+        };
     };
     
     xdg.configFile."niri/config.kdl".source = ./configs/config.kdl;

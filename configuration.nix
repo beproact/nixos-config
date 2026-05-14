@@ -136,6 +136,7 @@
     mako
     libnotify
     zoxide
+    cargo
   ];
 
   programs.nix-ld.enable = true;
