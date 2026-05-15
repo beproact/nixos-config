@@ -130,6 +130,11 @@
       };
     };
   };
+  programs.rofi = {
+    enable = true;
+    # package = pkgs.rofi-wayland;
+    font = "JetBrainsMono Nerd Font 10";
+  };
 
   services.mako = {
     enable = true;

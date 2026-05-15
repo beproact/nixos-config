@@ -123,6 +123,8 @@
     home-manager
     fuzzel
     jq
+    rofi
+    tofi
     kdePackages.breeze-icons
     xwayland-satellite
     foot
@@ -140,7 +142,6 @@
     libnotify
     zoxide
     cargo
-    zellij
   ];
 
   programs.nix-ld.enable = true;
