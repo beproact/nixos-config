@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    /etc/nixos/hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -44,7 +44,8 @@
   services.displayManager.ly.enable = true;
   services.displayManager.ly = {
     x11Support = true;
-    settings = { # https://github.com/fairyglade/ly/blob/master/res/config.ini
+    settings = {
+      # https://github.com/fairyglade/ly/blob/master/res/config.ini
       # animation = "gameoflife";
       battery_id = "BAT0";
       clock = "%c";
@@ -56,9 +57,8 @@
     };
   };
 
-
   programs.niri = {
-    enable = true;    
+    enable = true;
   };
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
@@ -97,10 +97,13 @@
   users.users.snappy = {
     isNormalUser = true;
     description = "Snappy Mink";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -110,7 +113,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim 
+    neovim
     wget
     ghostty
     kitty
@@ -121,7 +124,7 @@
     fuzzel
     jq
     kdePackages.breeze-icons
-    xwayland-satellite 
+    xwayland-satellite
     foot
     nur.repos.Ev357.helium
     gh
@@ -137,20 +140,22 @@
     libnotify
     zoxide
     cargo
+    zellij
   ];
 
   programs.nix-ld.enable = true;
-  
+
   environment.variables = {
     EDITOR = "nvim";
   };
 
-
-
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
