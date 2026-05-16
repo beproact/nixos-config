@@ -85,7 +85,7 @@
   programs.foot.enable = true;
   programs.foot.settings = {
     main.font = "JetBrainsMono Nerd Font:size=10";
-    colors = {
+    colors-dark = {
       foreground = "eaeaea";
       background = "000000";
       regular0 = "000000";
@@ -134,6 +134,7 @@
     enable = true;
     # package = pkgs.rofi-wayland;
     font = "JetBrainsMono Nerd Font 10";
+    terminal = "\${pkgs.foot}/bin/foot";
   };
 
   services.mako = {
@@ -149,5 +150,9 @@
   };
 
   xdg.configFile."niri/config.kdl".source = ./configs/config.kdl;
+
+  # wayland.windowManager.mango = {
+  #   enable = true;
+  # };
 
 }

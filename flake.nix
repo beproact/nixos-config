@@ -1,15 +1,21 @@
 {
   description = "Snappy";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    # nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # hamr.url = "github:stewart86/hamr";
   };
 
@@ -19,6 +25,7 @@
       nixpkgs,
       home-manager,
       nur,
+      mangowm,
       # hamr,
       ...
     }:
@@ -44,7 +51,16 @@
           # {
           #   environment.systemPackages = [ hamr.packages.x86_64-linux.default ];
           # }
+          mangowm.nixosModules.mango
         ];
+
+        # specialArgs = {
+        #   pkgs-unstable = import nixpkgs-unstable {
+        #     system = "x86_64-linux";
+        #     config.allowUnfree = true;
+        #   };
+        # };
+
       };
     };
 }

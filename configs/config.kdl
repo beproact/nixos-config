@@ -383,6 +383,7 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 // Suggested binds for running programs: terminal, app launcher, screen locker.
+    Mod+B hotkey-overlay-title="Open Broswer" { spawn "helium"; }
     Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "foot"; }
     // Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "pkill fuzzel || fuzzel"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "rofi -show run -replace"; }
@@ -395,7 +396,6 @@ binds {
     Mod+O hotkey-overlay-title=null { spawn-sh "custom-niri-harp load O"; }
     Mod+P hotkey-overlay-title=null { spawn-sh "custom-niri-harp load P"; }
 
-    Mod+B hotkey-overlay-title=null { spawn-sh "custom-niri-harp load B"; }
     Mod+N hotkey-overlay-title=null { spawn-sh "custom-niri-harp load N"; }
     Mod+M hotkey-overlay-title=null { spawn-sh "custom-niri-harp load M"; }
 
@@ -405,7 +405,6 @@ binds {
     Mod+Alt+O hotkey-overlay-title=null { spawn-sh "custom-niri-harp store O"; }
     Mod+Alt+P hotkey-overlay-title=null { spawn-sh "custom-niri-harp store P"; }
 
-    Mod+Alt+B hotkey-overlay-title=null { spawn-sh "custom-niri-harp store B"; }
     Mod+Alt+N hotkey-overlay-title=null { spawn-sh "custom-niri-harp store N"; }
     Mod+Alt+M hotkey-overlay-title=null { spawn-sh "custom-niri-harp store M"; }
     // Mod+Z hotkey-overlay-title="Switch Application: fuzzel" { spawn-sh "custom-niri-harp load"; }

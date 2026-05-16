@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -60,6 +64,9 @@
   programs.niri = {
     enable = true;
   };
+
+  programs.mango.enable = true;
+
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
   programs.direnv.enable = true;
