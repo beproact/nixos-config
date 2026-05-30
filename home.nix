@@ -23,7 +23,7 @@
     shellAliases = {
       nrs = "sudo nixos-rebuild switch";
       btw = "echo waffle house";
-      nrsf = "sudo nixos-rebuild switch --flake /home/snappy/.dotfiles/nixos/ --impure";
+      nrsf = "sudo nixos-rebuild switch --flake /home/snappy/.dotfiles/nixos/ ";
       hms = "home-manager switch -f /home/snappy/.dotfiles/nixos/home.nix";
     };
     sessionVariables = {

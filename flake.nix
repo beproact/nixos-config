@@ -2,7 +2,6 @@
   description = "Snappy";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    # nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,8 +14,6 @@
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # hamr.url = "github:stewart86/hamr";
   };
 
   outputs =
@@ -46,9 +43,6 @@
               nur.overlays.default
             ];
           }
-          # {
-          #   environment.systemPackages = [ hamr.packages.x86_64-linux.default ];
-          # }
           inputs.mangowm.nixosModules.mango
         ];
 
