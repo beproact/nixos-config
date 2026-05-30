@@ -25,10 +25,8 @@
       nixpkgs,
       home-manager,
       nur,
-      mangowm,
-      # hamr,
       ...
-    }:
+    }@inputs:
     {
       nixosConfigurations.snix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -51,7 +49,7 @@
           # {
           #   environment.systemPackages = [ hamr.packages.x86_64-linux.default ];
           # }
-          mangowm.nixosModules.mango
+          inputs.mangowm.nixosModules.mango
         ];
 
         # specialArgs = {
