@@ -122,8 +122,8 @@
   environment.systemPackages = with pkgs; [
     neovim
     wget
-    ghostty
-    kitty
+    # ghostty
+    # kitty
     git
     yazi
     gcc
